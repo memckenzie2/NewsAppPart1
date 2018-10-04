@@ -54,8 +54,6 @@ public class PoliticsFragment extends Fragment {
 
         new GetGuardianNews().execute();
 
-        stories.add(new NewsData("title", null, "date" , "webURL"));
-
         //Create a {@link NewsArrayAdapter} with a list of {@link NewsData}s
         final NewsArrayAdapter adapter = new NewsArrayAdapter(getActivity(), stories);
 
@@ -119,7 +117,7 @@ public class PoliticsFragment extends Fragment {
                     JSONArray resultsArray = responseObject.getJSONArray("results");
 
                     // If there are results in the features array
-                    for (int i = 0; i < newsStories.length(); i++){
+                    for (int i = 0; i < resultsArray.length(); i++){
                         // Extract out the first result(which is a single news story)
                         JSONObject results = resultsArray.getJSONObject(i);
 

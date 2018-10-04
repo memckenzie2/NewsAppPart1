@@ -34,9 +34,35 @@ public class NewsArrayAdapter extends ArrayAdapter<NewsData> {
         // Get the NewsData object for the given position in the menu list
         final NewsData currentNewsItem = getItem(locationPosition);
 
-        //Displays the LocationData's location name to the location_name TextView in location_list_item.xml
-        TextView newsTitle = newsView.findViewById(R.id.title);
-        //newsTitle.setText(currentLocItem.getStoryTitle());
+        String date =  currentNewsItem.getDate();
+        TextView dateView = newsView.findViewById(R.id.date);
+        if(date == null){
+            dateView.setVisibility(View.GONE);
+        }else{
+            dateView.setText(date);
+        }
+
+        String title = currentNewsItem.getTitle();
+        TextView titleView = newsView.findViewById(R.id.title);
+        titleView.setText(title);
+
+        String author = currentNewsItem.getAuthor();
+        TextView authorView = newsView.findViewById(R.id.author);
+        if(author == null){
+            authorView.setVisibility(View.GONE);
+        }else{
+            authorView.setText(author);
+            authorView.setVisibility(View.VISIBLE);
+        }
+
+        int pictureID = currentNewsItem.getStoryPictureId();
+        ImageView imageView = newsView.findViewById(R.id.story_image);
+        if(pictureID == -1){
+            imageView.setVisibility(View.GONE);
+        }else{
+            imageView.setImageResource(pictureID);
+            imageView.setVisibility(View.VISIBLE);
+        }
 
         return newsView;
     }
