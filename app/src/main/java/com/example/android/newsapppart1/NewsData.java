@@ -57,8 +57,7 @@ public class NewsData {
         return storyPictureId;
     }
 
-    public String getDate() {
-        return date;
+    public String getDate() { return date;
     }
 
     public void setTitle(String title) {

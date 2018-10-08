@@ -6,6 +6,13 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/flag_mash_img"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/us_uk_blend_public_domain_wikicommons"
+        android:scaleType="centerCrop" />
+
     <android.support.design.widget.TabLayout
         android:id="@+id/news_tabs"
         android:layout_width="match_parent"
@@ -16,7 +23,6 @@
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
 
 
 </LinearLayout>
