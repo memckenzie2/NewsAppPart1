@@ -5,6 +5,7 @@ public class NewsData {
     private String title;
     //Resource ID is initialized to -1 (a value that would not be an ID) to indicate that no image is associated with a Location
     private int storyPictureId = -1;
+    private String section;
     private String author;
     private String date;
     private String url;
@@ -16,10 +17,12 @@ public class NewsData {
      * @param story_author
      * @param story_picture_ID
      * @param publication_date
+     * @param story_section
      */
-    public NewsData(String story_title , String story_author, int story_picture_ID, String publication_date, String story_url){
+    public NewsData(String story_title , String story_author, String story_section, int story_picture_ID, String publication_date, String story_url){
         setTitle(story_title);
         setAuthor(story_author);
+        setSection(story_section);
         setStoryPictureId(story_picture_ID);
         setDate(publication_date);
         setUrl(story_url);
@@ -33,12 +36,13 @@ public class NewsData {
      * @param publication_date
      * @param story_url
      */
-    public NewsData(String story_title , String story_author, String publication_date, String story_url){
+    public NewsData(String story_title , String story_section, String story_author, String publication_date, String story_url){
 
         setTitle(story_title);
         setAuthor(story_author);
         setDate(publication_date);
         setUrl(story_url);
+        setSection(story_section);
     }
 
     public String getUrl() {
@@ -51,6 +55,10 @@ public class NewsData {
 
     public String getAuthor() {
         return author;
+    }
+
+    public String getSection() {
+        return section;
     }
 
     public int getStoryPictureId() {
@@ -68,6 +76,10 @@ public class NewsData {
         this.author = author;
     }
 
+    public void setSection(String section) {
+        this.section = section;
+    }
+
     public void setStoryPictureId(int storyPictureId) {
         this.storyPictureId = storyPictureId;
     }
@@ -79,5 +91,8 @@ public class NewsData {
     public void setUrl(String url) {
         this.url = url;
     }
+
+
+
 
 }

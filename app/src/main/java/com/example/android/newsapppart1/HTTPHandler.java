@@ -115,12 +115,13 @@ public class HTTPHandler {
                 JSONObject results = response.getJSONObject("response");
 
                 // Extract out the title, time, and tsunami values
+                String section = results.getString("sectionName");
                 String title = results.getString("webTitle");
                 String date = results.getString("webPublicationDate");
                 String webURL = results.getString("webUrl");
 
                 // Create a new {@link Event} object
-                return new NewsData(title, null, date , webURL);
+                return new NewsData(title, null, section,  date , webURL);
             }
         } catch (JSONException e) {
             Log.e(LOG_TAG_MSSG, "Problem parsing the Guardian API JSON results", e);

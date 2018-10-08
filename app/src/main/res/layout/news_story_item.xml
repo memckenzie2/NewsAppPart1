@@ -86,13 +86,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/category"
+            android:id="@+id/section"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/colorAccent"
             android:gravity="left|center_vertical"
             android:padding="@dimen/small_margin"
+            android:text="Section"
             android:textSize="@dimen/label_text"
             tools:text="World News - Europe" />
 

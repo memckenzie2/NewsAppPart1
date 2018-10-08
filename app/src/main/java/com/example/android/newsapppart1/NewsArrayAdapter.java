@@ -55,6 +55,10 @@ public class NewsArrayAdapter extends ArrayAdapter<NewsData> {
             authorView.setVisibility(View.VISIBLE);
         }
 
+        String section = currentNewsItem.getSection();
+        TextView sectionView = newsView.findViewById(R.id.section);
+        sectionView.setText(section);
+
         int pictureID = currentNewsItem.getStoryPictureId();
         ImageView imageView = newsView.findViewById(R.id.story_image);
         if(pictureID == -1){

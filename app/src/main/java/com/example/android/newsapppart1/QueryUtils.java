@@ -158,12 +158,13 @@ public final class QueryUtils {
 
                 // Extract out the title, wen publication date, and story url
                 String title = results.getString("webTitle");
+                String section = results.getString("sectionName");
                 String date = results.getString("webPublicationDate");
                 String webURL = results.getString("webUrl");
                 date = date.substring(5, 6) + "-" + date.substring(9, 10) + "-" + date.substring(0, 4);
 
                 // Create a new {@link Event} object
-                storiesList.add(new NewsData(title, null, date, webURL));
+                storiesList.add(new NewsData(title, section, null, date, webURL));
             }
         } catch (JSONException e) {
             Log.e(LOG_TAG_MSSG, "Problem parsing the Guardian API JSON results", e);

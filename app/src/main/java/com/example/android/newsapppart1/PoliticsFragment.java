@@ -25,7 +25,7 @@ public class PoliticsFragment extends Fragment implements LoaderManager.LoaderCa
 
     //The url String containing the Guardian API call
     private static final String GUARDIAN_REQUEST_URL =
-            "https://content.guardianapis.com/politics?api-key=test";
+            "https://content.guardianapis.com/politics?&show-tags=contributor&api-key=test";
 
     //Constant value for the newsloader ID in case we want to use multiple loaders in future.
      private static final int NEWS_LOADER_ID = 1;
