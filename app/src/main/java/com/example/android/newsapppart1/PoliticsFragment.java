@@ -19,6 +19,11 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.LoaderManager;
+import android.app.LoaderManager.LoaderCallbacks;
+import android.content.Loader;
+
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,7 +42,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class PoliticsFragment extends Fragment {
+public class PoliticsFragment extends Fragment implements LoaderCallbacks<List<NewsData>>{
 
     //The url String containing the Guardian API call
     private static final String GUARDIAN_REQUEST_URL =
@@ -98,6 +103,36 @@ public class PoliticsFragment extends Fragment {
                 startActivity(websiteIntent);
             }
         });
+
+        @Override
+        public Loader<List<NewsData>> onCreateLoader(int i, Bundle bundle) {
+            // TODO: Create a new loader for the given URL
+        }
+
+        @Override
+        public void onLoadFinished(Loader<List<NewsData>> loader, List<NewsData> news) {
+            // TODO: Update the UI with the result
+        }
+
+        @Override
+        public void onLoaderReset(Loader<List<NewsData>> loader) {
+            // TODO: Loader reset, so we can clear out our existing data.
+        }
+    }
+
+    @Override
+    public Loader<List<NewsData>> onCreateLoader(int id, Bundle args) {
+        return null;
+    }
+
+    @Override
+    public void onLoadFinished(Loader<List<NewsData>> loader, List<NewsData> data) {
+
+    }
+
+    @Override
+    public void onLoaderReset(Loader<List<NewsData>> loader) {
+
     }
 
     /*
