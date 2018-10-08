@@ -5,23 +5,23 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-public class TopicAdapter extends FragmentPagerAdapter{
+public class TopicAdapter extends FragmentPagerAdapter {
     private Context myContext;
-    public TopicAdapter(Context context,FragmentManager fm) {
+
+    public TopicAdapter(Context context, FragmentManager fm) {
         super(fm);
         myContext = context;
     }
 
     @Override
     public Fragment getItem(int position) {
-        if(position == 0){
+        if (position == 0) {
             //The "all" (AKA US and UK) political news fragment (2nd floor)
             return new PoliticsFragment();
-        }
-        else if (position == 1){
+        } else if (position == 1) {
             //The U.S. politics fragment
             return new USPoliticsFragment();
-        }else {
+        } else {
             //The UK politics fragment
             return new UKPoliticsFragment();
         }

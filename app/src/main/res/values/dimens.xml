@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="med_margin">16dp</dimen>
     <dimen name="small_margin">8dp</dimen>
     <dimen name="subhead_text">14sp</dimen>
     <dimen name="label_text">10sp</dimen>
-    <dimen name="title_text">16sp</dimen>
 
 </resources>

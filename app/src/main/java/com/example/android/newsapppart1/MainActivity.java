@@ -1,9 +1,9 @@
 package com.example.android.newsapppart1;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.design.widget.TabLayout;
 
 //Public Domain Image Sourced from https://commons.wikimedia.org/wiki/File:US-UK-blend.png
 
@@ -32,5 +32,6 @@ public class MainActivity extends AppCompatActivity {
         // Connect the tab layout with the view pager. This allows for swiping and updating the tabLayouts header to hilight the
         //current floor's tab
         tabLayout.setupWithViewPager(viewPager);
+
     }
 }
