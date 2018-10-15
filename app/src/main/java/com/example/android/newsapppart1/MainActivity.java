@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,11 +28,12 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
         // Find the tab layout that shows the tabs for each floor fragment
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.news_tabs);
+        TabLayout tabLayout = findViewById(R.id.news_tabs);
 
         // Connect the tab layout with the view pager. This allows for swiping and updating the tabLayouts header to hilight the
         //current floor's tab
         tabLayout.setupWithViewPager(viewPager);
+
 
     }
 }

@@ -1,20 +1,18 @@
 package com.example.android.newsapppart1;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
-import android.util.Log;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.support.v4.app.LoaderManager.LoaderCallbacks;
-import android.support.v4.content.Loader;
-import android.support.v4.app.LoaderManager;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +23,7 @@ public class PoliticsFragment extends Fragment implements LoaderManager.LoaderCa
 
     //The url String containing the Guardian API call
     private static final String GUARDIAN_REQUEST_URL =
-            "https://content.guardianapis.com/politics?&show-tags=contributor&api-key=test";
+            "https://content.guardianapis.com/politics?&show-tags=contributor&api-key=df012d12-90e6-43da-8efc-9d3771d6956c";
 
     //Constant value for the newsloader ID in case we want to use multiple loaders in future.
      private static final int NEWS_LOADER_ID = 1;
@@ -33,7 +31,10 @@ public class PoliticsFragment extends Fragment implements LoaderManager.LoaderCa
     private View rootView;
     private ListView listView;
 
-
+    /**
+     * TextView that is displayed when the news list is empty
+     */
+    private TextView emptyStateView;
 
     public PoliticsFragment() {
         // Required empty public constructor
@@ -43,13 +44,17 @@ public class PoliticsFragment extends Fragment implements LoaderManager.LoaderCa
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.news_list, container, false);
-        listView = (ListView) rootView.findViewById(R.id.news_list);
+        listView = rootView.findViewById(R.id.news_list);
+
+        //Setup empty state view
+        emptyStateView = rootView.findViewById(R.id.empty_state);
+        listView.setEmptyView(emptyStateView);
 
         //Create a {@link NewsArrayAdapter} with a list of {@link NewsData}s
         newsAdapter = new NewsArrayAdapter(getActivity(), new ArrayList<NewsData>());
 
         //Find the ListView object from news_list.xml layout file
-        listView = (ListView) rootView.findViewById(R.id.news_list);
+        listView = rootView.findViewById(R.id.news_list);
 
         //Point the listview to the LocationArrayAdapter we created above so it displays our list of locations
         listView.setAdapter(newsAdapter);
@@ -100,6 +105,7 @@ public class PoliticsFragment extends Fragment implements LoaderManager.LoaderCa
         if (data != null && !data.isEmpty()){
             newsAdapter.addAll(data);
         }
+        emptyStateView.setText(R.string.no_news);
     }
 
     @Override
