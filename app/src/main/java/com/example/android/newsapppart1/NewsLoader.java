@@ -1,9 +1,13 @@
 package com.example.android.newsapppart1;
 
+/**
+ * Implementation of an AsyncTaskLoader based on the Earthquake app from the udacity nano-degree.
+ * The source code for those projects can be found here:
+ * https://github.com/udacity/ud843-QuakeReport
+ */
+
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
-
-import com.example.android.newsapppart1.NewsData;
 
 import java.util.List;
 

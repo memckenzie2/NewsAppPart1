@@ -1,5 +1,14 @@
 package com.example.android.newsapppart1;
 
+/**
+ * This TopicAdapter class is based upon the FragmentPafeAdapter class introduced in the Miwok App.
+ * Source Code found here: https://github.com/udacity/ud839_Miwok
+ * <p>
+ * Also based upon previously submitted AudioBook and Library Tour App. Source Code found
+ * * here: https://github.com/memckenzie2/AudiobookApp
+ * * and here: https://github.com/memckenzie2/CentralLibraryTour
+ */
+
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,7 +25,7 @@ public class TopicAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
-            //The "all" (AKA US and UK) political news fragment (2nd floor)
+            //The "all" (AKA US and UK) political news fragment
             return new PoliticsFragment();
         } else if (position == 1) {
             //The U.S. politics fragment

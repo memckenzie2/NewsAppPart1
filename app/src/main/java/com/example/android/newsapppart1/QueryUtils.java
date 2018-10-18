@@ -1,12 +1,17 @@
-package com.example.android.newsapppart1;/*
-Based on the Quake Report, Soonami, and Did You Feel It Apps from the Udacity Android Basic Nano-degree found here:
-https://github.com/udacity/ud843-QuakeReport
-https://github.com/udacity/ud843_Soonam
-https://github.com/udacity/ud843_DidYouFeelIt
+package com.example.android.newsapppart1;
 
-* */
+/**
+ * Implementation based on the HTTPHandler class from Pokemon app from udacity nano-degree.
+ * The source code for that project can be found here:
+ * https://github.com/udacity/Pokemon/blob/master/app/src/main/java/udacity/pokemon/HttpHandler.java
+ * <p>
+ * Also on the Soonami and Earthquake app's QueryUtils from the udacity nano-degree.
+ * The source code for those projects can be found here:
+ * https://github.com/udacity/ud843_Soonami/blob/solution/app/src/main/java/
+ * and here:
+ * https://github.com/udacity/ud843-QuakeReport
+ */
 
-import android.text.TextUtils;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -27,12 +32,12 @@ import java.util.List;
 public final class QueryUtils {
 
     /**
-     * Tag for the log messages
+     * Tag for the log messages for troubleshooting
      */
     public static final String LOG_TAG_MSSG = QueryUtils.class.getSimpleName();
 
     /*Empty constructor set to private to prevent creating an instance of Query Utils.
-     * Only used for static variables and methods with no need for an object instance of the class*/
+     * This class is only used for static variables and methods with no need for an object instance of the class*/
     private QueryUtils() {
 
     }
@@ -43,10 +48,10 @@ public final class QueryUtils {
      */
     public static List<NewsData> fetchNewsData(String guardianRequestUrl) {
 
-
-        HTTPHandler handler = new HTTPHandler();
+        //Create a URL object from the given String parameter
         URL url = createUrl(guardianRequestUrl);
 
+        //Attempt to establish HTTP Request to retrieve JSON Output
         ArrayList<NewsData> storiesList = new ArrayList<NewsData>();
         String jsonRawResponse = "";
         try {
@@ -55,8 +60,10 @@ public final class QueryUtils {
             Log.e(LOG_TAG_MSSG, "Problem making the HTTP request to Guardian API.", e);
         }
 
+        //Log JSON Response for toubleshooting
         Log.e(LOG_TAG_MSSG, "Response from url: " + jsonRawResponse);
 
+        //Extracts the news stories as a list from the raw JSON output given by the Guardian's API
         storiesList = (ArrayList<NewsData>) extractNewsStoriesList(jsonRawResponse);
         return storiesList;
     }
@@ -74,7 +81,7 @@ public final class QueryUtils {
         return url;
     }
 
-    //Makes a HTTP request to the given url and return the JSON response as a String
+    //Makes an HTTP request to the given url and return the JSON response as a String
     private static String makeHttpRequest(URL url) throws IOException {
 
         String jsonResponse = "";
@@ -150,21 +157,31 @@ public final class QueryUtils {
             JSONObject responseObject = newsStories.getJSONObject("response");
             JSONArray resultsArray = responseObject.getJSONArray("results");
 
-            // If there are results in the features array
+            // If there are results in the response array, pull individual story's details and add to a list of NewsData objects
             for (int i = 0; i < resultsArray.length(); i++) {
                 // Extract out the first result(which is a single news story)
                 JSONObject results = resultsArray.getJSONObject(i);
 
 
-                // Extract out the title, wen publication date, and story url
+                // Extract out the title, section, web publication date, and story url
                 String title = results.getString("webTitle");
                 String section = results.getString("sectionName");
                 String date = results.getString("webPublicationDate");
                 String webURL = results.getString("webUrl");
                 date = date.substring(5, 6) + "-" + date.substring(9, 10) + "-" + date.substring(0, 4);
 
-                // Create a new {@link Event} object
-                storiesList.add(new NewsData(title, section, null, date, webURL));
+                //Extracts the tag JSON array containing the authors/contributors and loops over them to create a final author string
+                String author = "Contributors: ";
+                JSONArray tagArray = results.getJSONArray("tags");
+                for (int j = 0; j < tagArray.length(); j++) {
+                    JSONObject tags = tagArray.getJSONObject(j);
+                    //Extract contributors from tags
+                    author = author + tags.getString("webTitle") + "; ";
+                }
+
+
+                // Create a new {@link NewsData} object
+                storiesList.add(new NewsData(title, author, section, date, webURL));
             }
         } catch (JSONException e) {
             Log.e(LOG_TAG_MSSG, "Problem parsing the Guardian API JSON results", e);

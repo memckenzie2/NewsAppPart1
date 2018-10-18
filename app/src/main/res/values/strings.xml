@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">News App Part 1</string>
-    <string name="politics">Politics - All</string>
+    <string name="app_name">Across the Pond Politics</string>
+    <string name="politics">Politics - All </string>
     <string name="us_politics">U.S. Politics</string>
     <string name="uk_politics">U.K. Politics</string>
     <string name="no_news">No political news stories found.</string>
+    <string name="no_connection">No internet connection found. Please connect to the internet to load the latest Political News.</string>
 </resources>

@@ -7,61 +7,34 @@
     android:gravity="center_horizontal"
     android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/story_image"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/colorAccent"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayoutDetails"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
     <LinearLayout
         android:id="@+id/linearLayoutDetails"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="@dimen/large_margin"
+        android:layout_marginLeft="@dimen/large_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginEnd="@dimen/large_margin"
+        android:layout_marginRight="@dimen/large_margin"
         android:gravity="center_vertical|fill_vertical"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/story_image"
+
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutCategory">
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
-            android:gravity="left|center_vertical"
-            android:padding="@dimen/small_margin"
-            android:textSize="@dimen/subhead_text"
+            style="@style/news_title"
             tools:layout_editor_absoluteX="159dp"
             tools:layout_editor_absoluteY="41dp"
             tools:text="The Inevitable Collapse of the Environment" />
 
         <TextView
             android:id="@+id/author"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:background="@color/colorAccent"
-            android:gravity="left|center_vertical"
-            android:padding="@dimen/small_margin"
-            android:textSize="@dimen/subhead_text"
+            style="@style/news_author"
             tools:layout_editor_absoluteX="159dp"
             tools:layout_editor_absoluteY="41dp"
             tools:text="James Witcomb Riley, III" />
@@ -69,45 +42,34 @@
 
     </LinearLayout>
 
-
     <LinearLayout
         android:id="@+id/linearLayoutCategory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginStart="@dimen/large_margin"
+        android:layout_marginLeft="@dimen/large_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginEnd="@dimen/large_margin"
+        android:layout_marginRight="@dimen/large_margin"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayoutDetails"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/story_image"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/section"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
-            android:gravity="left|center_vertical"
-            android:padding="@dimen/small_margin"
+            style="@style/tags"
             android:text="Section"
-            android:textSize="@dimen/label_text"
+            android:textAllCaps="true"
             tools:text="World News - Europe" />
 
         <TextView
             android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:background="@color/colorAccent"
-            android:gravity="left|center_vertical"
-            android:padding="@dimen/small_margin"
-            android:textSize="@dimen/label_text"
+            style="@style/tags"
+            android:gravity="right|center_vertical"
+            android:textStyle="italic"
             tools:text="01/01/1900" />
-
 
     </LinearLayout>
 
