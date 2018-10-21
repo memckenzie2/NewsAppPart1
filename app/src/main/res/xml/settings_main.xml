@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/settings_title">
+    <PreferenceCategory android:title="@string/order">
+        <ListPreference
+            android:entries="@array/dates_array"
+            android:entryValues="@array/dates_array"
+            android:key="@string/settings_quantity"
+            android:title="@string/order" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_quantity">
+        <EditTextPreference
+            android:defaultValue="@string/default_quantity"
+            android:inputType="numberDecimal"
+            android:key="@string/settings_quantity"
+            android:selectAllOnFocus="true"
+            android:title="@string/settings_quantity" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

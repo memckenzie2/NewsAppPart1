@@ -15,10 +15,12 @@ package com.example.android.newsapppart1;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
@@ -36,7 +38,7 @@ public class UKPoliticsFragment extends Fragment implements LoaderManager.Loader
 
 
     //The url String containing the Guardian API call
-    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/politics?order-by=newest&show-tags=contributor&api-key=df012d12-90e6-43da-8efc-9d3771d6956c";
+    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/politics?";
 
     //Constant value for the newsloader ID in case we want to use multiple loaders in future.
     private static final int NEWS_LOADER_ID = 1;
@@ -116,8 +118,26 @@ public class UKPoliticsFragment extends Fragment implements LoaderManager.Loader
 
     @Override
     public Loader<List<NewsData>> onCreateLoader(int id, Bundle args) {
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+
+        //Retrieves the default value for the # of news stories to display
+        String deafultNewsQuantity = sharedPrefs.getString(getString(R.string.settings_quantity), getString(R.string.default_quantity));
+
+        //Usese the values and defaults to update the URI
+
+        //Breaks apart URI string and uses a URI builder to add on parameters
+        Uri genericUri = Uri.parse(GUARDIAN_REQUEST_URL);
+        Uri.Builder uriBuilder = genericUri.buildUpon();
+
+        //Appends new parameters to query based on user preferences for order and number of returned news items
+        uriBuilder.appendQueryParameter("order-by", "newest");
+        uriBuilder.appendQueryParameter("page-size", "10");
+        //Parameters required to retrieve necessary stories from Guardian API
+        uriBuilder.appendQueryParameter("api-key", "df012d12-90e6-43da-8efc-9d3771d6956c");
+        uriBuilder.appendQueryParameter("show-tags", "contributor");
+
         //Create a new NewsLoader for the Guardian Request URL
-        return new NewsLoader(getContext(), GUARDIAN_REQUEST_URL);
+        return new NewsLoader(getContext(), uriBuilder.toString());
     }
 
     @Override
