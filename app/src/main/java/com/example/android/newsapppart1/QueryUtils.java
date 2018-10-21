@@ -168,7 +168,7 @@ public final class QueryUtils {
                 String section = results.getString("sectionName");
                 String date = results.getString("webPublicationDate");
                 String webURL = results.getString("webUrl");
-                date = date.substring(5, 6) + "-" + date.substring(9, 10) + "-" + date.substring(0, 4);
+                date = date.substring(5, 7) + "-" + date.substring(8, 10) + "-" + date.substring(0, 4);
 
                 //Extracts the tag JSON array containing the authors/contributors and loops over them to create a final author string
                 String author = "Contributors: ";
@@ -177,6 +177,10 @@ public final class QueryUtils {
                     JSONObject tags = tagArray.getJSONObject(j);
                     //Extract contributors from tags
                     author = author + tags.getString("webTitle") + "; ";
+                }
+
+                if (author == "Contributors: ") {
+                    author = "";
                 }
 
 
