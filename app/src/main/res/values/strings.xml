@@ -8,5 +8,8 @@
     <string name="settings">Settings</string>
     <string name="settings_title">Newsfeed Settings</string>
     <string name="settings_quantity">Number of Stories to Display (Max 50)</string>
+    <string name="settings_quantity_key">quantity</string>
+    <string name="settings_order_key">order</string>
     <string name="default_quantity">10</string>
+    <string name="default_order">Newest First</string>
 </resources>
