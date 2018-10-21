@@ -5,4 +5,9 @@
         <item>Newest First</item>
         <item>Oldest First</item>
     </string-array>
+
+    <string-array name="dates_array_values">
+        <item>newest</item>
+        <item>oldest</item>
+    </string-array>
 </resources>

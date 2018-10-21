@@ -128,9 +128,12 @@ public class PoliticsFragment extends Fragment implements LoaderManager.LoaderCa
         Uri genericUri = Uri.parse(GUARDIAN_REQUEST_URL);
         Uri.Builder uriBuilder = genericUri.buildUpon();
 
+        String order = sharedPrefs.getString(getString(R.string.settings_order_key), getString(R.string.default_order));
+        String quantity = sharedPrefs.getString(getString(R.string.settings_quantity_key), getString(R.string.settings_quantity));
+
         //Appends new parameters to query based on user preferences for order and number of returned news items
-        uriBuilder.appendQueryParameter("order-by", "newest");
-        uriBuilder.appendQueryParameter("page-size", "10");
+        uriBuilder.appendQueryParameter("order-by", order);
+        uriBuilder.appendQueryParameter("page-size", quantity);
         //Parameters required to retrieve necessary stories from Guardian API
         uriBuilder.appendQueryParameter("api-key", "df012d12-90e6-43da-8efc-9d3771d6956c");
         uriBuilder.appendQueryParameter("show-tags", "contributor");

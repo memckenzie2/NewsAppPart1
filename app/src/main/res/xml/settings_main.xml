@@ -5,7 +5,7 @@
     <ListPreference
         android:defaultValue="@string/default_order"
         android:entries="@array/dates_array"
-        android:entryValues="@array/dates_array"
+        android:entryValues="@array/dates_array_values"
         android:key="@string/settings_order_key"
         android:title="@string/order" />
 
